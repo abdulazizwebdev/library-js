@@ -1,1 +1,6 @@
-console.log('Hello!');
+import './lib/lib';
+
+// examples
+$('div');
+$('.active').hide();
+$('test').show();
