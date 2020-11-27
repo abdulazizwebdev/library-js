@@ -1,6 +1,9 @@
 import './lib/lib';
+import $ from './lib/lib';
 
 // examples
-$('div');
-$('.active').hide();
-$('test').show();
+$('.active').addClass('dsavdsasfdaf', 'avdsvvasd');
+
+$('.test').toggleClass('class1');
+console.log($('.active').contains('first'));
+
