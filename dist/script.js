@@ -135,6 +135,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_display__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/display */ "./src/js/lib/modules/display.js");
 /* harmony import */ var _modules_class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/class */ "./src/js/lib/modules/class.js");
 /* harmony import */ var _modules_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/actions */ "./src/js/lib/modules/actions.js");
+/* harmony import */ var _modules_attributes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/attributes */ "./src/js/lib/modules/attributes.js");
+
 
 
 
@@ -178,6 +180,36 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.click = function (handle
     } else {
       this[i].click();
     }
+  }
+
+  return this;
+};
+
+/***/ }),
+
+/***/ "./src/js/lib/modules/attributes.js":
+/*!******************************************!*\
+  !*** ./src/js/lib/modules/attributes.js ***!
+  \******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.setAttr = function (attributeName, value) {
+  for (let i = 0; i < this.length; i++) {
+    this[i].setAttribute(attributeName, value);
+  }
+
+  return this;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.getAttr = function (attributeName) {
+  for (let i = 0; i < this.length; i++) {
+    this[i].getAttribute(attributeName);
   }
 
   return this;
@@ -302,12 +334,8 @@ __webpack_require__.r(__webpack_exports__);
 
  // examples
 
-Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.active').addClass('dsavdsasfdaf', 'avdsvvasd');
-Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.test').toggleClass('class1');
-Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('button').click(function () {
-  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])(this).toggleClass('active');
-  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])(this).hide();
-}); // $('button').click();
+Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.active').setAttr('data-test', 'value-2');
+console.log(Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.active').getAttr('data-test'));
 
 /***/ })
 

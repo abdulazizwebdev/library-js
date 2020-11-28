@@ -2,13 +2,7 @@ import './lib/lib';
 import $ from './lib/lib';
 
 // examples
-$('.active').addClass('dsavdsasfdaf', 'avdsvvasd');
 
-$('.test').toggleClass('class1');
+$('.active').setAttr('data-test', 'value-2');
 
-$('button').click(function() {
-    $(this).toggleClass('active');
-    $(this).hide();
-});
-
-// $('button').click();
+console.log($('.active').getAttr('data-test'));
