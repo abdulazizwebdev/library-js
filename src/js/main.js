@@ -5,5 +5,10 @@ import $ from './lib/lib';
 $('.active').addClass('dsavdsasfdaf', 'avdsvvasd');
 
 $('.test').toggleClass('class1');
-console.log($('.active').contains('first'));
 
+$('button').click(function() {
+    $(this).toggleClass('active');
+    $(this).hide();
+});
+
+// $('button').click();
