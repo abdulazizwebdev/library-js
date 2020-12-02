@@ -21,11 +21,13 @@ import $ from './lib/lib';
 
 // // another example
 
-$('button').on('click', function(){
-    $('div').eq(1).toggleClass('active');
-    $('div').eq(2).toggleClass('active');
+$('div').eq(1).on('click', function(){
+    $('button').fadeIn();
 });
 
+$('button').on('click', function(){
+    $(this).fadeOut();
+});
 // ///////////////////////////////////////////////////
 
 // const btns = document.querySelectorAll('button');
@@ -34,11 +36,4 @@ $('button').on('click', function(){
 //         btn.style.display = 'none';
 //     });
 // });
-
-$('div').click(function() {
-    console.log($(this).index());
-});
-
-console.log($('.more').eq(0).siblings());
-  
 
