@@ -557,31 +557,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_lib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/lib */ "./src/js/lib/lib.js");
 
  // examples
-// console.log($('.active').mapAttr('data-test'));     // will return array: ["key-1", "key-2"]
-////////////////////////////////////////////////////////////////////////////////////////////
-// const elements = document.querySelectorAll('.active');
-// const arr = [];
-// elements.forEach((elem) => {
-//     let attr = elem.getAttribute('data-test');
-//     if (attr) {
-//         return arr.push(attr);
-//     }
-// });
-// console.log(arr);                                   // will return array: ["key-1", "key-2"]
-// // another example
 
-Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('div').eq(1).on('click', function () {
-  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('button').fadeIn();
+Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('#first').click(() => {
+  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').eq(0).fadeOut();
 });
-Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('button').on('click', function () {
-  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])(this).fadeOut();
-}); // ///////////////////////////////////////////////////
-// const btns = document.querySelectorAll('button');
-// btns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         btn.style.display = 'none';
-//     });
-// });
+Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('#second').click(() => {
+  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').eq(1).fadeOut();
+});
+Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('#third').click(() => {
+  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').fadeIn();
+});
 
 /***/ })
 
