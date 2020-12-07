@@ -1,5 +1,28 @@
 import $ from '../core';
 
+$.prototype._fadeIn = function(duration, display, final, item) {
+    item.style.display = display;
+
+    const _fadeIn = (complection) => {
+        item.style.opacity = complection;
+    };
+
+    const animation = this.animateOverTime(duration, _fadeIn, final);
+    requestAnimationFrame(animation);
+};
+
+$.prototype._fadeOut = function (duration, final, item) {
+    const _fadeOut = (complection) => {
+        item.style.opacity = 1 - complection;
+        if (complection == 1) {
+            item.style.display = 'none';
+        }
+    };
+
+    const animation = this.animateOverTime(duration, _fadeOut, final);
+    requestAnimationFrame(animation);
+};
+
 $.prototype.animateOverTime = function(duration, callback, final) {
     let timeStart;
 
@@ -28,14 +51,7 @@ $.prototype.animateOverTime = function(duration, callback, final) {
 
 $.prototype.fadeIn = function(duration = 500, display = 'block', final = '') {
     for (let i = 0; i < this.length; i++) {
-        this[i].style.display = display;
-
-        const _fadeIn = (complection) => {
-            this[i].style.opacity = complection;
-        };
-
-        const animation = this.animateOverTime(duration, _fadeIn, final);
-        requestAnimationFrame(animation);
+        this._fadeIn(duration, display, final, this[i]);
     }
 
     return this;
@@ -43,15 +59,21 @@ $.prototype.fadeIn = function(duration = 500, display = 'block', final = '') {
 
 $.prototype.fadeOut = function(duration = 500, final = '') {
     for (let i = 0; i < this.length; i++) {
-        const _fadeOut = (complection) => {
-            this[i].style.opacity = 1 - complection;
-            if (complection == 1) {
-                this[i].style.display = 'none';
-            }
-        };
+        this._fadeOut(duration, final, this[i]);
+    }
 
-        const animation = this.animateOverTime(duration, _fadeOut, final);
-        requestAnimationFrame(animation);
+    return this;
+};
+
+$.prototype.fadeToggle = function(duration = 500, display = 'block', final = '') {
+    for (let i = 0; i < this.length; i++) {
+        try {
+            if (window.getComputedStyle(this[i]).display === 'none') {
+                this._fadeIn(duration, display, final, this[i]);
+            } else {
+                this._fadeOut(duration, final, this[i]);
+            }
+        }catch(e){}
     }
 
     return this;

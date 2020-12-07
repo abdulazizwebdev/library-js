@@ -86,6 +86,30 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/js/lib/components/dropdown.js":
+/*!*******************************************!*\
+  !*** ./src/js/lib/components/dropdown.js ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.dropdown = function () {
+  for (let i = 0; i < this.length; i++) {
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(() => {
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(`[data-toggle-id=${Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).getAttr('id')}]`).fadeToggle();
+    });
+  }
+};
+
+Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('.dropdown-toggle').dropdown(); // initiliase dropdown menu...
+
+/***/ }),
+
 /***/ "./src/js/lib/core.js":
 /*!****************************!*\
   !*** ./src/js/lib/core.js ***!
@@ -138,11 +162,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_attributes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/attributes */ "./src/js/lib/modules/attributes.js");
 /* harmony import */ var _modules_handlers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/handlers */ "./src/js/lib/modules/handlers.js");
 /* harmony import */ var _modules_effects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/effects */ "./src/js/lib/modules/effects.js");
+/* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/dropdown */ "./src/js/lib/components/dropdown.js");
+ // Modules
 
 
 
 
 
+
+ // Components
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_core__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -445,6 +473,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
 
 
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype._fadeIn = function (duration, display, final, item) {
+  item.style.display = display;
+
+  const _fadeIn = complection => {
+    item.style.opacity = complection;
+  };
+
+  const animation = this.animateOverTime(duration, _fadeIn, final);
+  requestAnimationFrame(animation);
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype._fadeOut = function (duration, final, item) {
+  const _fadeOut = complection => {
+    item.style.opacity = 1 - complection;
+
+    if (complection == 1) {
+      item.style.display = 'none';
+    }
+  };
+
+  const animation = this.animateOverTime(duration, _fadeOut, final);
+  requestAnimationFrame(animation);
+};
+
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.animateOverTime = function (duration, callback, final) {
   let timeStart;
 
@@ -471,14 +523,7 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.animateOverTime = functi
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeIn = function (duration = 500, display = 'block', final = '') {
   for (let i = 0; i < this.length; i++) {
-    this[i].style.display = display;
-
-    const _fadeIn = complection => {
-      this[i].style.opacity = complection;
-    };
-
-    const animation = this.animateOverTime(duration, _fadeIn, final);
-    requestAnimationFrame(animation);
+    this._fadeIn(duration, display, final, this[i]);
   }
 
   return this;
@@ -486,16 +531,21 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeIn = function (durat
 
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeOut = function (duration = 500, final = '') {
   for (let i = 0; i < this.length; i++) {
-    const _fadeOut = complection => {
-      this[i].style.opacity = 1 - complection;
+    this._fadeOut(duration, final, this[i]);
+  }
 
-      if (complection == 1) {
-        this[i].style.display = 'none';
+  return this;
+};
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.fadeToggle = function (duration = 500, display = 'block', final = '') {
+  for (let i = 0; i < this.length; i++) {
+    try {
+      if (window.getComputedStyle(this[i]).display === 'none') {
+        this._fadeIn(duration, display, final, this[i]);
+      } else {
+        this._fadeOut(duration, final, this[i]);
       }
-    };
-
-    const animation = this.animateOverTime(duration, _fadeOut, final);
-    requestAnimationFrame(animation);
+    } catch (e) {}
   }
 
   return this;
@@ -559,14 +609,26 @@ __webpack_require__.r(__webpack_exports__);
  // examples
 
 Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('#first').click(() => {
-  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').eq(0).fadeOut();
+  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').eq(0).fadeToggle();
 });
 Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('#second').click(() => {
-  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').eq(1).fadeOut();
+  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').eq(1).fadeToggle();
 });
 Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('#third').click(() => {
-  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').fadeIn();
-});
+  Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.w-px500').fadeToggle();
+}); // $('.wrap').html(
+//     `
+//         <div class="dropdown">
+//                 <button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton">Dropdown button</button>
+//                 <div class="dropdown-menu" data-toggle-id="dropdownMenuButton">
+//                     <a href="#" class="dropdown-item">Action</a>
+//                     <a href="#" class="dropdown-item">Action #2</a>
+//                     <a href="#" class="dropdown-item">Action #3</a>
+//                 </div>
+//         </div>
+//     `
+// );
+// $('.dropdown-toggle').dropdown();
 
 /***/ })
 
