@@ -1,32 +1,36 @@
-import './lib/lib';
 import $ from './lib/lib';
 
 // examples
 
-$('#first').click(() => {
-    $('.w-px500').eq(0).fadeToggle();
-});
-
-$('#second').click(() => {
-    $('.w-px500').eq(1).fadeToggle();
-});
-
-
-$('#third').click(() => {
-    $('.w-px500').fadeToggle();
-});
-
-// $('.wrap').html(
-//     `
-//         <div class="dropdown">
-//                 <button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton">Dropdown button</button>
-//                 <div class="dropdown-menu" data-toggle-id="dropdownMenuButton">
-//                     <a href="#" class="dropdown-item">Action</a>
-//                     <a href="#" class="dropdown-item">Action #2</a>
-//                     <a href="#" class="dropdown-item">Action #3</a>
-//                 </div>
-//         </div>
-//     `
-// );
-
-// $('.dropdown-toggle').dropdown();
+$('#trigger').click(() => $('#trigger').createModal({
+    text: {
+        title: 'Modal title',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minus doloremque nesciunt enim rem quam corporis? Dolorem pariatur magnam distinctio perferendis. Ratione dolorem voluptates iusto facilis odit veritatis, suscipit voluptatibus!'
+    },
+    btns: {
+        count: 3,
+        settings: [
+            [
+                'Close',
+                ['btn-danger', 'mr10'],
+                true
+            ],
+            [
+                'Save changes',
+                ['btn-success'],
+                false,
+                () => {
+                    alert('Данные сохранены');
+                }
+            ],
+            [
+                'Another btn',
+                ['btn-warning', 'ml10'],
+                false,
+                () => {
+                    alert('Hello World');
+                }
+            ]
+        ]
+    }
+}));
