@@ -41,7 +41,7 @@ $.prototype.find = function(selector) {
     let numberOfItems = 0;
     let counter = 0;
 
-    let copyObj = Object.assign({}, this);
+    const copyObj = Object.assign({}, this);
 
     for (let i = 0; i < copyObj.length; i++) {
         const arr = copyObj[i].querySelectorAll(selector);
@@ -51,16 +51,17 @@ $.prototype.find = function(selector) {
 
         for (let j = 0; j < arr.length; j++) {
             this[counter] = arr[j];
-            counter++;                      // will filter items and create new {} with filtred items
+            counter++;
         }
 
         numberOfItems += arr.length;
     }
+
     this.length = numberOfItems;
 
     const objLength = Object.keys(this).length;
     for (; numberOfItems < objLength; numberOfItems++) {
-        delete this[numberOfItems];         // will delete items which don't matches
+        delete this[numberOfItems];
     }
 
     return this;

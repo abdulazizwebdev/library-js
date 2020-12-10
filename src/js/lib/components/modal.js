@@ -1,37 +1,38 @@
 import $ from '../core';
 
-$.prototype.modal = function(created, modal = '.modal', closeModal = '[data-close]', target = 'data-target') {
+$.prototype.modal = function(created) {
     for (let i = 0; i < this.length; i++) {
+        const target = this[i].getAttribute('data-target');
         $(this[i]).click((e) => {
             e.preventDefault();
-            $($(this[i]).getAttr(target)).fadeIn();
+            $(target).fadeIn();
             document.body.style.overflow = 'hidden';
         });
 
-        $(closeModal).click(() => {
-            $(modal).fadeOut();
-            document.body.style.overflow = '';
-            if (created) {
-                document.querySelector(target).remove();
-            }
+        const closeElements = document.querySelectorAll(`${target} [data-close]`);
+        closeElements.forEach(elem => {
+            $(elem).click(() => {
+                $(target).fadeOut();
+                document.body.style.overflow = '';
+                if (created) {
+                    document.querySelector(target).remove();
+                }
+            });
         });
     
-        $(modal).click((e) => {
-            const modalClassName = modal.split('.').slice(1).toString();
-            if (e.target.classList.contains(modalClassName)) {
-                $(modal).fadeOut();
+        $(target).click(e => {
+            if (e.target.classList.contains('modal')) {
+                $(target).fadeOut();
                 document.body.style.overflow = '';
                 if (created) {
                     document.querySelector(target).remove();
                 }
             }
         });
-
-    }    
+    }
 };
 
 $('[data-toggle="modal"]').modal();
-
 
 $.prototype.createModal = function({text, btns} = {}) {
     for (let i = 0; i< this.length; i++) {
@@ -72,13 +73,13 @@ $.prototype.createModal = function({text, btns} = {}) {
                 <div class="modal-footer">
                     
                 </div>
-            </div>
+            </div>  
         </div>
         `;
 
         modal.querySelector(".modal-footer").append(...buttons);
         document.body.appendChild(modal);
         $(this[i]).modal(true);
-        $(this[i].getAttribute('data-target')).fadeIn(500);
+        $(this[i].getAttribute('data-target')).fadeIn();
     }
 };

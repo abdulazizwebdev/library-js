@@ -122,26 +122,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
 
 
-_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (created, modal = '.modal', closeModal = '[data-close]', target = 'data-target') {
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.modal = function (created) {
   for (let i = 0; i < this.length; i++) {
+    const target = this[i].getAttribute('data-target');
     Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(e => {
       e.preventDefault();
-      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).getAttr(target)).fadeIn();
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeIn();
       document.body.style.overflow = 'hidden';
     });
-    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(closeModal).click(() => {
-      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(modal).fadeOut();
-      document.body.style.overflow = '';
+    const closeElements = document.querySelectorAll(`${target} [data-close]`);
+    closeElements.forEach(elem => {
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(elem).click(() => {
+        Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeOut();
+        document.body.style.overflow = '';
 
-      if (created) {
-        document.querySelector(target).remove();
-      }
+        if (created) {
+          document.querySelector(target).remove();
+        }
+      });
     });
-    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(modal).click(e => {
-      const modalClassName = modal.split('.').slice(1).toString();
-
-      if (e.target.classList.contains(modalClassName)) {
-        Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(modal).fadeOut();
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).click(e => {
+      if (e.target.classList.contains('modal')) {
+        Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(target).fadeOut();
         document.body.style.overflow = '';
 
         if (created) {
@@ -198,15 +200,54 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.createModal = function (
                 <div class="modal-footer">
                     
                 </div>
-            </div>
+            </div>  
         </div>
         `;
     modal.querySelector(".modal-footer").append(...buttons);
     document.body.appendChild(modal);
     Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).modal(true);
-    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i].getAttribute('data-target')).fadeIn(500);
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i].getAttribute('data-target')).fadeIn();
   }
 };
+
+/***/ }),
+
+/***/ "./src/js/lib/components/tab.js":
+/*!**************************************!*\
+  !*** ./src/js/lib/components/tab.js ***!
+  \**************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../core */ "./src/js/lib/core.js");
+
+
+_core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.tab = function (tabActiveClass = 'tab-item--active', tab = '.tab', tabContent = '.tab-content', tabContentActive = 'tab-content--active') {
+  for (let i = 0; i < this.length; i++) {
+    Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).click(() => {
+      Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).addClass(tabActiveClass).siblings().removeClass(tabActiveClass).closest(tab).find(tabContent).removeClass(tabContentActive).eq(Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])(this[i]).index()).addClass(tabContentActive);
+    });
+  }
+}; // $.prototype.tab = function() {
+//     for (let i = 0; i < this.length; i++) {
+//         $(this[i]).on('click', () => {
+//             $(this[i])
+//                 .addClass('tab-item--active')
+//                 .siblings()
+//                 .removeClass('tab-item--active')
+//                 .closest('.tab')
+//                 .find('.tab-content')
+//                 .removeClass('tab-content--active')
+//                 .eq($(this[i]).index())
+//                 .addClass('tab-content--active');
+//         });
+//     }
+// };
+
+
+Object(_core__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-tabpanel] .tab-item').tab();
 
 /***/ }),
 
@@ -264,6 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_effects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/effects */ "./src/js/lib/modules/effects.js");
 /* harmony import */ var _components_dropdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/dropdown */ "./src/js/lib/components/dropdown.js");
 /* harmony import */ var _components_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/modal */ "./src/js/lib/components/modal.js");
+/* harmony import */ var _components_tab__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/tab */ "./src/js/lib/components/tab.js");
  // Modules
 
 
@@ -272,6 +314,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // Components
+
 
 
 
@@ -330,7 +373,7 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.index = function () {
 _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.find = function (selector) {
   let numberOfItems = 0;
   let counter = 0;
-  let copyObj = Object.assign({}, this);
+  const copyObj = Object.assign({}, this);
 
   for (let i = 0; i < copyObj.length; i++) {
     const arr = copyObj[i].querySelectorAll(selector);
@@ -341,7 +384,7 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.find = function (selecto
 
     for (let j = 0; j < arr.length; j++) {
       this[counter] = arr[j];
-      counter++; // will filter items and create new {} with filtred items
+      counter++;
     }
 
     numberOfItems += arr.length;
@@ -351,7 +394,7 @@ _core__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.find = function (selecto
   const objLength = Object.keys(this).length;
 
   for (; numberOfItems < objLength; numberOfItems++) {
-    delete this[numberOfItems]; // will delete items which don't matches
+    delete this[numberOfItems];
   }
 
   return this;
@@ -715,11 +758,9 @@ Object(_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('#trigger').click(() =>
     body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minus doloremque nesciunt enim rem quam corporis? Dolorem pariatur magnam distinctio perferendis. Ratione dolorem voluptates iusto facilis odit veritatis, suscipit voluptatibus!'
   },
   btns: {
-    count: 3,
-    settings: [['Close', ['btn-danger', 'mr10'], true], ['Save changes', ['btn-success'], false, () => {
-      alert('Данные сохранены');
-    }], ['Another btn', ['btn-warning', 'ml10'], false, () => {
-      alert('Hello World');
+    count: 2,
+    settings: [['Close', ['btn-danger', 'mr-10'], true], ['Save changes', ['btn-success'], false, () => {
+      alert('saved!');
     }]]
   }
 }));

@@ -8,11 +8,11 @@ $('#trigger').click(() => $('#trigger').createModal({
         body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minus doloremque nesciunt enim rem quam corporis? Dolorem pariatur magnam distinctio perferendis. Ratione dolorem voluptates iusto facilis odit veritatis, suscipit voluptatibus!'
     },
     btns: {
-        count: 3,
+        count: 2,
         settings: [
             [
                 'Close',
-                ['btn-danger', 'mr10'],
+                ['btn-danger', 'mr-10'],
                 true
             ],
             [
@@ -20,15 +20,7 @@ $('#trigger').click(() => $('#trigger').createModal({
                 ['btn-success'],
                 false,
                 () => {
-                    alert('Данные сохранены');
-                }
-            ],
-            [
-                'Another btn',
-                ['btn-warning', 'ml10'],
-                false,
-                () => {
-                    alert('Hello World');
+                    alert('saved!');
                 }
             ]
         ]
