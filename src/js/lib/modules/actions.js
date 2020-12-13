@@ -71,14 +71,16 @@ $.prototype.closest = function(selector) {
     let counter = 0;
 
     for (let i = 0; i < this.length; i++) {
-        this[i].closest(selector);          // will find and return the closest Node
+        this[i] = this[i].closest(selector);
         counter++;
     }
 
     const objLength = Object.keys(this).length;
     for (; counter < objLength; counter++) {
-        delete this[counter];               // will delete items which don't matches
+        delete this[counter];
     }
+
+    return this;
 };
 
 $.prototype.siblings = function() {
@@ -106,6 +108,15 @@ $.prototype.siblings = function() {
     const objLength = Object.keys(this).length;
     for (; numberOfItems < objLength; numberOfItems++) {
         delete this[numberOfItems];         // will delete items which don't matches
+    }
+
+    return this;
+};
+
+$.prototype.value = function() {
+    for(let i = 0; i < this.length; i++){
+        const value = this[i].getAttribute('value');
+        return value;
     }
 
     return this;

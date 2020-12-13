@@ -1239,3 +1239,81 @@
 
 .h-px500 {
   height: 500px; }
+
+.game__title {
+  background-color: #343a40;
+  color: #ffffff; }
+
+.game .btn__wrapper {
+  width: 320px; }
+
+.game .tictac__wrapper {
+  width: 320px;
+  height: 320px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px; }
+
+.game .active {
+  border-radius: 17px; }
+
+.game .clicked {
+  background-color: #2a9924; }
+  .game .clicked:hover {
+    background-color: #2a9924; }
+
+.modal-input {
+  width: 350px;
+  height: 60px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  padding-left: 15px;
+  font-size: 18px; }
+  .modal-input:first-child {
+    margin-top: 0; }
+
+.modal-text {
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 18px; }
+
+.modal-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px; }
+
+.modal-check {
+  margin-right: 30px;
+  width: 160px; }
+  .modal-check:last-child {
+    margin-right: 0px; }
+
+.modal #save {
+  width: 175px; }
+
+@media (max-width: 575px) {
+  .game .btn__wrapper {
+    width: 290px;
+    margin-top: 25px; }
+  .game .tictac__wrapper {
+    width: 290px;
+    height: 290px;
+    margin-top: 40px; }
+  .game #play {
+    margin-top: 30px; }
+  .game .turn {
+    width: 290px; }
+  .modal-dialog {
+    max-width: 290px; }
+  .modal-input {
+    width: 250px;
+    height: 50px; }
+  .modal-check {
+    margin-right: 25px;
+    width: 100px;
+    font-size: 14px; }
+  .modal #save {
+    width: 140px;
+    font-size: 16px; } }

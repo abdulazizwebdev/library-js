@@ -19,6 +19,14 @@ $.prototype.getAttr = function(attributeName) {
     return this;
 };
 
+$.prototype.removeAttr = function(attributeName) {
+    for (let i = 0; i < this.length; i++) {
+        this[i].removeAttribute(attributeName);     // will remove the atrribute
+    }
+
+    return this;
+};
+
 $.prototype.mapAttr = function(attributeName) {
     const arr = [];
     for (let i = 0; i < this.length; i++) {

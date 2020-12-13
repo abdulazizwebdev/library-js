@@ -1,6 +1,6 @@
 import $ from '../core';
 
-$.prototype.modal = function(created) {
+$.prototype.modal = function(created = 'false') {
     for (let i = 0; i < this.length; i++) {
         const target = this[i].getAttribute('data-target');
         $(this[i]).click((e) => {
@@ -14,9 +14,9 @@ $.prototype.modal = function(created) {
             $(elem).click(() => {
                 $(target).fadeOut();
                 document.body.style.overflow = '';
-                if (created) {
-                    document.querySelector(target).remove();
-                }
+                // if (created) {
+                //     document.querySelector(target).remove();
+                // }
             });
         });
     

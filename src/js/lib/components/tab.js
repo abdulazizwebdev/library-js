@@ -6,9 +6,9 @@ $.prototype.tab = function(
     tabContent = '.tab-content',
     tabContentActive = 'tab-content--active') {
     for(let i = 0; i < this.length; i++) {
-        $(this[i]).click(() => {
+        $(this[i]).on('click', () => {
             $(this[i])
-                .addClass(tabActiveClass)
+                .addClass('tab-item--active')
                 .siblings()
                 .removeClass(tabActiveClass)
                 .closest(tab)

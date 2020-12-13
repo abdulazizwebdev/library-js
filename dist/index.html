@@ -8,165 +8,58 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <button class="btn btn-primary m-20" id="first">First FadeToggle</button>
-        <button class="btn btn-secondary m-20" id="second">Second FadeToggle</button>
-        <button class="btn btn-success m-20" id="third">All FadeToggle</button>
+    <section class="game">
+        <div class="game__title w-pr100 h-px50 pt-5">
+            <div class="text-center fz32 fw700">TIC TAC TOE</div>
+        </div>
+        <div class="container">
+            <div class="btn__wrapper block-center d-flex mt-35 f-space-between">
+                <button class="btn btn-danger w-px100 fz22 text-center fw700">PvP</button>
+                <button id="change" data-target="#change-modal" data-toggle="modal" class="btn btn-warning w-px120 fz20 text-center fw700">change</button>
+            </div>
+            <div class="turn w-px320 block-center">
+                <div class="title fw500 fz24 mt-15">Turn: <span>Player 1</span></div>
+            </div>
+            <div class="tictac__wrapper mt-40 block-center">
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+                <button class="btn btn-dark text-center fz32 d-flex f-center fw700"></button>
+            </div>
 
-        <!-- Dropdown menu -->
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" id="dropdownMenuButton">Dropdown button</button>
-            <div class="dropdown-menu" data-toggle-id="dropdownMenuButton">
-                <a href="#" class="dropdown-item">Action</a>
-                <a href="#" class="dropdown-item">Action #2</a>
-                <a href="#" class="dropdown-item">Action #3</a>
-            </div>
+            <button class="play btn btn-success d-block block-center fz20 mt-45 fw700 w-px140">Play again</button>
         </div>
-        <div class="wrapper d-flex f-space-between">
-            <div class="card">
-                <img class="card-img" src="https://www.apple.com/newsroom/images/product/iphone/lifestyle/Apple_Shot-on-iPhone-Challenge-2020_Austin-Mann_01072020_big.jpg.large.jpg" alt="photo">
-                <div class="card-body">
-                    <div class="card-title">Card title #1</div>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia itaque placeat qui suscipit.</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" id="trigger" data-target="#exampleModal">Link to</a>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://www.apple.com/newsroom/images/product/iphone/lifestyle/Apple_Shot-on-iPhone-Challenge-2020_Austin-Mann_01072020_big.jpg.large.jpg" alt="photo">
-                <div class="card-body">
-                    <div class="card-title">Card title #2</div>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia itaque placeat qui suscipit.</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Link to</a>
-                </div>
-            </div>
-            <div class="card">
-                <img class="card-img" src="https://www.apple.com/newsroom/images/product/iphone/lifestyle/Apple_Shot-on-iPhone-Challenge-2020_Austin-Mann_01072020_big.jpg.large.jpg" alt="photo">
-                <div class="card-body">
-                    <div class="card-title">Card title #3</div>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia itaque placeat qui suscipit.</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">Link to</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 
-    <div class="container mt-25">
-        <div class="wrap d-flex f-space-between">
-            <button class="btn btn-primary">Some Text</button>
-            <button class="btn btn-secondary">Some Text</button>
-            <button class="btn btn-success">Some Text</button>
-            <button class="btn btn-danger">Some Text</button>
-            <button class="btn btn-warning">Some Text</button>
-            <button class="btn btn-info">Some Text</button>
-            <button class="btn btn-light">Some Text</button>
-            <button  id="text" class="btn btn-dark">Some Text</button>
-        </div>
-    </div>
-
-    <div class="container mt-25 ">
-        <div class="wrap d-flex f-space-between">
-            <button class="btn btn-outline-primary">Some Text</button>
-            <button class="btn btn-outline-secondary">Some Text</button>
-            <button class="btn btn-outline-success">Some Text</button>
-            <button class="btn btn-outline-danger">Some Text</button>
-            <button class="btn btn-outline-warning">Some Text</button>
-            <button class="btn btn-outline-info">Some Text</button>
-            <button class="btn btn-outline-light">Some Text</button>
-            <button class="btn btn-outline-dark">Some Text</button>
-        </div>
-    </div>
-    <!-- Modal -->
-    <!-- <div class="modal" id="exampleModal">
+    <div class="modal" id="change-modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <button class="close" data-close>
                     <span>&times;</span>
                 </button>
                 <div class="modal-header">
-                    <div class="modal-title">
-                        Modal title
-                    </div>
+                    <div class="modal-title">Settings</div>
                 </div>
                 <div class="modal-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minus doloremque nesciunt enim rem quam corporis? Dolorem pariatur magnam distinctio perferendis. Ratione dolorem voluptates iusto facilis odit veritatis, suscipit voluptatibus!
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" data-close>Close</button>
-                    <button class="btn btn-success">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="modal" id="exampleModal2">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button class="close" data-close>
-                    <span>&times;</span>
-                </button>
-                <div class="modal-header">
-                    <div class="modal-title">
-                        Modal title #2
+                    <input class="modal-input d-block block-center mt-15" type="text" placeholder="Enter 1st player's name">
+                    <input class="modal-input d-block block-center mt-15" type="text" placeholder="Enter 2nd player's name">
+                    <div class="modal-text">Choose game mode:</div>
+                    <div class="modal-btn">
+                        <div class="modal-check btn btn-danger fw500 fz20">PvP</div>
+                        <div class="modal-check btn btn-primary fw500 fz20">Computer</div>
                     </div>
                 </div>
-                <div class="modal-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minus doloremque nesciunt enim rem quam corporis? 
-                </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger" data-close>Close</button>
-                    <button class="btn btn-success">Save changes</button>
+                    <button id="save" data-close class="btn btn-success d-block fw500 block-center fz20">save</button>
                 </div>
-            </div>
+            </div>  
         </div>
     </div>
-
-    <div class="modal" id="exampleModal3">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button class="close" data-closed>
-                    <span>&times;</span>
-                </button>
-                <div class="modal-header">
-                    <div class="modal-title">
-                        Modal title #3
-                    </div>
-                </div>
-                <div class="modal-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum minus doloremque nesciunt enim rem quam corporis? Dolorem pariatur magnam distinctio perferendis. Ratione dolorem voluptates iusto facilis odit veritatis, suscipit voluptatibus! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur cupiditate eligendi consectetur! Earum, inventore atque! Placeat molestiae, maxime magnam quaerat rem, ad tempore sit recusandae laborum odit tempora, exercitationem voluptatibus.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-danger" data-closed>Close</button>
-                    <button class="btn btn-success">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- tabs -->
-
-    <div class="tab mt-20 block-center">
-        <div class="tab-panel" data-tabpanel>
-            <div class="tab-item tab-item--active">Content 1</div>
-            <div class="tab-item">Content 2</div>
-            <div class="tab-item">Content 3</div>
-        </div>
-        <div class="tab-content tab-content--active">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat laboriosam blanditiis omnis? Ab molestias tempora beatae ex itaque cumque, velit modi, molestiae debitis earum dolor quae quis. Ipsum, omnis voluptatem!
-            <br> <br>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet voluptates ipsum delectus vitae similique earum veniam? Odit soluta quibusdam laudantium molestias perferendis ad voluptates, earum ea deserunt architecto provident ipsum.
-        </div>
-        <div class="tab-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat laboriosam blanditiis omnis? Ab molestias tempora beatae ex itaque cumque, velit modi, molestiae debitis earum dolor quae quis. Ipsum, omnis voluptatem!
-            <br> <br>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet voluptates ipsum delectus vitae similique earum veniam? Odit soluta quibusdam laudantium molestias perferendis ad voluptates, earum ea deserunt architecto provident ipsum.
-            <br> <br>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Amet voluptates ipsum delectus vitae similique earum veniam? Odit soluta quibusdam laudantium molestias perferendis ad voluptates, earum ea deserunt architecto provident ipsum.
-        </div>
-        <div class="tab-content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat laboriosam blanditiis omnis? Ab molestias tempora beatae ex itaque cumque, velit modi, molestiae debitis earum dolor quae quis. Ipsum, omnis voluptatem!
-        </div>
-    </div>
-
     
     <script src='script.js'></script>
 </body>
