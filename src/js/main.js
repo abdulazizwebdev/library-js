@@ -6,7 +6,3 @@ window.addEventListener('DOMContentLoaded', () => {
     mark();
 
 });
-
-
-
-
