@@ -15,4 +15,6 @@ import './components/tab';
 import './components/accordion';
 import './components/carousel';
 
+// Services
+import './services/request';
 export default $;
